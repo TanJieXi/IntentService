@@ -55,24 +55,27 @@ public class TextThreeAcvtivity extends AppCompatActivity implements MyService.O
     }
 
     private static class MyHander extends Handler{
-        private WeakReference<Activity> mActivityWeakReference;
+       /* private WeakReference<Activity> mActivityWeakReference;
         private WeakReference<ImageView> mImageViewWeakReference;
-        private WeakReference<TextView> mTextViewWeakReference;
+        private WeakReference<TextView> mTextViewWeakReference;*/
         private WeakReference<Context> cc;
         public MyHander(Activity ac, ImageView iv, TextView tv, Context context) {
             cc = new WeakReference<Context>(context);
-            mActivityWeakReference = new WeakReference<Activity>(ac);
+           /* mActivityWeakReference = new WeakReference<Activity>(ac);
             mImageViewWeakReference = new WeakReference<ImageView>(iv);
-            mTextViewWeakReference = new WeakReference<TextView>(tv);
+            mTextViewWeakReference = new WeakReference<TextView>(tv);*/
         }
 
         @Override
         public void handleMessage(Message msg) {
             super.handleMessage(msg);
             TextThreeAcvtivity context = (TextThreeAcvtivity) cc.get();
-            TextThreeAcvtivity activity = (TextThreeAcvtivity) mActivityWeakReference.get();
+          /* TextThreeAcvtivity activity = (TextThreeAcvtivity) mActivityWeakReference.get();
             mImageViewWeakReference.get().setImageBitmap(((BitMapBean) msg.obj).getBitmap());
-            mTextViewWeakReference.get().setText(((BitMapBean) msg.obj).getPath().concat("----》下载成功"));
+            mTextViewWeakReference.get().setText(((BitMapBean) msg.obj).getPath().concat("----》下载成功"));*/
+
+            context.iv_image.setImageBitmap(((BitMapBean) msg.obj).getBitmap());
+            context.tv_text.setText(((BitMapBean) msg.obj).getPath().concat("----》下载成功"));
         }
     }
 
